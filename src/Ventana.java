@@ -1,14 +1,20 @@
 import java.awt.EventQueue;
+import java.awt.TextField;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 
 public class Ventana {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -48,7 +54,21 @@ public class Ventana {
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Entrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String dato = new String();
+				dato = textField.getText();
+				
+				if(dato.equals("ivan")){
+					label.setText(dato);
+				}
+			}
+		});
 		btnNewButton.setBounds(135, 90, 89, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		label = new JLabel("");
+		label.setBounds(41, 156, 263, 50);
+		frame.getContentPane().add(label);
 	}
 }
